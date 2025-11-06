@@ -7,7 +7,7 @@ PeriodoAtuacao varchar(255) not null,
 Nacionalidade varchar(255) not null
 );
 
-insert  into artistas (artista, PeriodoAtuacao, Nacionalidade)
+replace into artistas (artista, PeriodoAtuacao, Nacionalidade)
 values  ('Vincent van Gogh', '1853-1890', 'Neerlandês'),
 	('Pablo Picasso', '1881-1973', 'Espanhol'),
         ('AnitaMalfatti', '1889-1964', 'Brasileira');
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS galeria(
   Dias varchar(255) not null
 );
 
-insert  into galeria (excursoes, horarios, Dias)
+replace  into galeria (excursoes, horarios, Dias)
 values  ('Vincent van Gogh', '09:00-12:00', 'Sexta-Feira'),
 	('Pablo Picasso', '14:00-16:00', 'Sábado'),
         ('Anita Malfatti', '17:00-19:00', 'Domingo');
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS funcionarios(
   especialidade VARCHAR(255) NOT NULL
 );
 
-insert  into funcionarios (nome, horarios, especialidade)
+replace  into funcionarios (nome, horarios, especialidade)
 values  ('Ana Carolina', '09:00 às 10:30', 'Vicent Van Gogh'),
 	('Bruno Mendes', '10:30 às 12:00', 'Vicent Van Gogh'),
         ('Carla Dias', '14:00 às 16:00', 'Pablo Picasso'),
@@ -49,7 +49,7 @@ Arte varchar(255) not null,
 ObraData varchar(255) not null
 );
 
-insert  into VanGogh (Arte, ObraData)
+replace  into VanGogh (Arte, ObraData)
 values  ('A Noite Estrelada', '1889'),
 	('Auto-Retrato', '1889'),
         ('O Quarto de Van Gogh em Arles', '1888'),
@@ -64,7 +64,7 @@ Arte varchar(255) not null,
 ObraData varchar(255) not null
 );
 
-insert  into PabloPicasso (Arte, ObraData)
+replace  into PabloPicasso (Arte, ObraData)
 values  ('Guernica', '1937'),
 	('Vieux guitariste aveugle', '1903'),
         ('Mulher no Espelho', '1932'),
@@ -79,7 +79,7 @@ Arte varchar(255) not null,
 ObraData varchar(255) not null
 );
 
-insert  into AnitaMalfatti (Arte, ObraData)
+replace  into AnitaMalfatti (Arte, ObraData)
 values  ('O homem amarelo', '1917'),
 	('Mario de Andrade I', '1922'),
         ('Samba', '1945'),
