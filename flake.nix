@@ -14,6 +14,7 @@
         sqls
 	ruff
 	python313
+	github-cli
 	python313Packages.flask
       ];
 
