@@ -12,6 +12,7 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         sqls
+	ruff
 	python313
 	python313Packages.flask
       ];
