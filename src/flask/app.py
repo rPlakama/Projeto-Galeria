@@ -28,3 +28,12 @@ class Artista(db.Model):
     nome = db.Column(db.String(255), nullable=False)
     periodo_atuacao = db.Column(db.String(255))
     nacionalidade = db.Column(db.String(255))
+
+
+class Obra(db.Model):
+    __tablename__ = "obras"
+    id = db.Column(db.Integer, primary_key=True)
+    artista_id = db.Column(db.Integer, db.ForeignKey("artistas.id"), nullable=False)
+    nome = db.Column(db.String(255), nullable=False)
+    link_image = db.Column(db.String(255), nullable=False)
+    ano = db.Column(db.Integer)
