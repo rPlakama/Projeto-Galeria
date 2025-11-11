@@ -36,3 +36,7 @@ Já feito?
 - flask-sqlalchemy
 - boostrap
 
+## Gerênciamento de depedências por?
+
+- Meu glorius and beloved NIX!
+- _Apenas seja imutavel e reproduzivel", Brutal.
