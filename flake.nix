@@ -15,6 +15,7 @@
 	gh
         sqls
 	ruff
+	prettier
 	python313
 	python313Packages.flask
 	typescript-language-server
