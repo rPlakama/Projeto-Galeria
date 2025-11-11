@@ -5,9 +5,9 @@ Projeto de Banco de Dados.
 
 Draft de PR (Implementação Flask!) 
 
-- Conectar o MySQL
-- Fazer interface com (react?)
 - Separar a página (web) em (3) seguimentos
+- Colocar mais imagen em Obras.image_link 
+
 
 Web?
 
@@ -19,4 +19,8 @@ home > artistas/nome-artista
 artistas
 artistas/nome-artista
 
+Já feito?
+
+- Boostrap inicial
+- Conexão com MariaDB
 
