@@ -13,7 +13,8 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def index(name=None):
-    return render_template("index.html", person=name)
+    obras = Obras.query.all()
+    return render_template("index.html", obras=obras)
 
 
 @app.route("/artistas")
@@ -30,7 +31,7 @@ class Artista(db.Model):
     nacionalidade = db.Column(db.String(255))
 
 
-class Obra(db.Model):
+class Obras(db.Model):
     __tablename__ = "obras"
     id = db.Column(db.Integer, primary_key=True)
     artista_id = db.Column(db.Integer, db.ForeignKey("artistas.id"), nullable=False)
