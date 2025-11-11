@@ -17,6 +17,7 @@
         ruff
         prettier
         python313
+	python313Packages.mariadb
         python313Packages.flask
         python313Packages.flask-sqlalchemy
         typescript-language-server
