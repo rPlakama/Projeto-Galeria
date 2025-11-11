@@ -1,0 +1,9 @@
+* {
+  font-weight: 500;
+}
+
+.carousel-item {
+  height: 800px;
+  overflow: hidden;
+  border-radius: 0.5%;
+}
