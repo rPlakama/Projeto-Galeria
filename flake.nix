@@ -17,6 +17,8 @@
 	ruff
 	python313
 	python313Packages.flask
+	typescript-language-server
+	vscode-langservers-extracted
       ];
 
       shellHook = ''
