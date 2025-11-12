@@ -1,13 +1,11 @@
-* {
-  font-weight: 500;
-}
-
 .carousel-item {
   height: 800px;
   overflow: hidden;
   border-radius: 0.5%;
 }
 
-.buttons_down-line {
-  background-color: red;
+.carousel-image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
