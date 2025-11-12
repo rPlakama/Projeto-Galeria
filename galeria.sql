@@ -1,14 +1,18 @@
 CREATE DATABASE IF NOT EXISTS Galeria;
 USE Galeria;
 
+<<<<<<< HEAD
 CREATE TABLE artistas (
+=======
+CREATE TABLE IF NOT EXISTS artistas (
+>>>>>>> local/master
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(255) NOT NULL,
-  periodo_atuacao VARCHAR(255),
+  anos_de_atuacao VARCHAR(255),
   nacionalidade VARCHAR(255)
 );
 
-CREATE TABLE obras (
+CREATE TABLE IF NOT EXISTS obras (
   id INT AUTO_INCREMENT PRIMARY KEY,
   artista_id INT NOT NULL,
   nome VARCHAR(255) NOT NULL,
@@ -16,7 +20,7 @@ CREATE TABLE obras (
   FOREIGN KEY (artista_id) REFERENCES artistas(id)
 );
 
-CREATE TABLE galeria (
+CREATE TABLE IF NOT EXISTS galeria (
   id INT AUTO_INCREMENT PRIMARY KEY,
   artista_id INT NOT NULL,
   excursao VARCHAR(255),
@@ -25,7 +29,7 @@ CREATE TABLE galeria (
   FOREIGN KEY (artista_id) REFERENCES artistas(id)
 );
 
-CREATE TABLE funcionarios (
+CREATE TABLE IF NOT EXISTS funcionarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(255) NOT NULL,
   horario VARCHAR(255),
