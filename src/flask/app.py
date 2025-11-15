@@ -10,8 +10,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
-
-
 class Artista(db.Model):
     __tablename__ = "artistas"
     id = db.Column(db.Integer, primary_key=True)
