@@ -17,6 +17,7 @@ class Artista(db.Model):
     __tablename__ = "artistas"
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
+    resumo = db.Column(db.Text, nullable=False)
     periodo_atuacao = db.Column(db.String(255))
     nacionalidade = db.Column(db.String(255))
 
@@ -29,7 +30,7 @@ class Obras(db.Model):
     link_image = db.Column(db.String(255), nullable=False)
     desc = db.Column(db.Text, nullable=True)
     ano = db.Column(db.Integer)
-    artista = db.relationship('Artista', backref='obras')
+    artista = db.relationship("Artista", backref="obras")
 
 
 # urls
@@ -65,6 +66,7 @@ def add_artista():
         try:
             nome_artista = request.form.get("nome")
             periodo_artista = request.form.get("periodo_atuacao")
+            resumo_artista = request.form.get("resumo")
             nacionalidade_artista = request.form.get("nacionalidade")
 
             if not nome_artista or not periodo_artista or not nacionalidade_artista:
@@ -77,6 +79,7 @@ def add_artista():
             novo_artista = Artista(
                 nome=nome_artista,
                 periodo_atuacao=periodo_artista,
+                resumo=resumo_artista,
                 nacionalidade=nacionalidade_artista,
             )
 

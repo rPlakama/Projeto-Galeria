@@ -15,8 +15,8 @@
 	gh
         sqls
         prettier
+	superhtml
 	typescript-language-server
-        vscode-langservers-extracted
 	# Python stuff...
 	ruff
         python313
