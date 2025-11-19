@@ -42,21 +42,6 @@ def index(name=None):
 
 @app.route("/obras")
 def obras():
-    # Non-dynamic, vou trabalhar ainda sobre isso... Sendo declarativo assim, não irá funcionar.
-    # artes = [
-    #    {
-    #        "titulo": "Arte 1",
-    #        "desc": "Descrição da arte 1",
-    #    },
-    #    {
-    #        "titulo": "Arte 2",
-    #        "desc": "Descrição da arte 2",
-    #    },
-    #    {
-    #        "titulo": "Arte 3",
-    #        "desc": "Descrição da arte 3",
-    #    },
-    # ]
     return render_template("obras.html", obras=obras)
 
 
