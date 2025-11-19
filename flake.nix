@@ -15,7 +15,7 @@
 	gh
         sqls
         prettier
-	superhtml
+	jinja-lsp
 	typescript-language-server
 	# Python stuff...
 	ruff
