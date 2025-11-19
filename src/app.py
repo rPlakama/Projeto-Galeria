@@ -103,6 +103,7 @@ def add_art():
         try:
             nome_obra = request.form.get("nome")
             ano_obra = request.form.get("ano")
+            desc_obra = request.form.get("desc")
             link_obra = request.form.get("link_image")
             artista_id_obra = request.form.get("artista_id")
 
@@ -117,6 +118,7 @@ def add_art():
 
             nova_obra = Obras(
                 nome=nome_obra,
+                dessc=desc_obra,
                 ano=ano_int,
                 link_image=link_obra,
                 artista_id=artista_id_int,

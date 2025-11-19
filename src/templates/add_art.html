@@ -12,9 +12,12 @@
          <h1>Adicionar Nova Obra de Arte</h1>
          <form action="{{ url_for('add_art') }}" method="POST">
             <div class="mb-3">
-               <label for="nome" class="form-label">Nome da Obra</label>
+               <label for="nome" class="form-label">Nome</label>
                <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
+	    <div class="mb-3">
+	        <label for="desc" class="form-label">Descrição</label>
+		<input type="text" class="form-control" id="desc" name="desc">
             <div class="mb-3">
                <label for="ano" class="form-label">Ano</label>
                <input type="number" class="form-control" id="ano" name="ano">
