@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
@@ -9,11 +10,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 
 class Artista(db.Model):
     __tablename__ = "artistas"
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
+    resumo = db.Column(db.Text, nullable=False)
     periodo_atuacao = db.Column(db.String(255))
     nacionalidade = db.Column(db.String(255))
 
@@ -23,8 +27,10 @@ class Obras(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     artista_id = db.Column(db.Integer, db.ForeignKey("artistas.id"), nullable=False)
     nome = db.Column(db.String(255), nullable=False)
-    link_image = db.Column(db.String(255), nullable=False)  
+    link_image = db.Column(db.String(255), nullable=False)
+    desc = db.Column(db.Text, nullable=True)
     ano = db.Column(db.Integer)
+    artista = db.relationship("Artista", backref="obras")
 
 
 # urls
@@ -49,7 +55,7 @@ def artistas():
 
 
 # formulário de artista
-@app.route("/add_artista", methods=["GET", "POST"])  
+@app.route("/add_artista", methods=["GET", "POST"])
 def add_artista():
     if request.method == "GET":
         lista_artistas = Artista.query.all()
@@ -60,6 +66,7 @@ def add_artista():
         try:
             nome_artista = request.form.get("nome")
             periodo_artista = request.form.get("periodo_atuacao")
+            resumo_artista = request.form.get("resumo")
             nacionalidade_artista = request.form.get("nacionalidade")
 
             if not nome_artista or not periodo_artista or not nacionalidade_artista:
@@ -72,6 +79,7 @@ def add_artista():
             novo_artista = Artista(
                 nome=nome_artista,
                 periodo_atuacao=periodo_artista,
+                resumo=resumo_artista,
                 nacionalidade=nacionalidade_artista,
             )
 
@@ -99,6 +107,7 @@ def add_art():
         try:
             nome_obra = request.form.get("nome")
             ano_obra = request.form.get("ano")
+            desc_obra = request.form.get("desc")
             link_obra = request.form.get("link_image")
             artista_id_obra = request.form.get("artista_id")
 
@@ -113,6 +122,7 @@ def add_art():
 
             nova_obra = Obras(
                 nome=nome_obra,
+                desc=desc_obra,
                 ano=ano_int,
                 link_image=link_obra,
                 artista_id=artista_id_int,
@@ -132,6 +142,5 @@ def add_art():
             return f"Um erro inesperado ocorreu: {e}", 500
 
 
-# Permite rodar com "python app.py"
 if __name__ == "__main__":
     app.run(debug=True)
