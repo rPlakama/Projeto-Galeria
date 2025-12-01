@@ -82,9 +82,14 @@ def add_artista():
             resumo_artista = request.form.get("resumo")
             nacionalidade_artista = request.form.get("nacionalidade")
 
-            if not nome_artista or not periodo_artista or not nacionalidade_artista:
+            if (
+                not nome_artista
+                or not periodo_artista
+                or not nacionalidade_artista
+                or not resumo_artista
+            ):
                 return (
-                    "Erro: Informações: Nome, nacionalidade e período de atuação são obrigatórios.",
+                    "Erro: Informações: Nome, nacionalidade, resumo e período de atuação são obrigatórios.",
                     400,
                 )
 
