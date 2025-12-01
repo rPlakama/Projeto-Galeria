@@ -20,6 +20,7 @@ class Artista(db.Model):
     resumo = db.Column(db.Text, nullable=False)
     periodo_atuacao = db.Column(db.String(255))
     nacionalidade = db.Column(db.String(255))
+    lore_link = db.Column(db.Text, nullable=False)
 
 
 class Obras(db.Model):
@@ -81,26 +82,29 @@ def add_artista():
             periodo_artista = request.form.get("periodo_atuacao")
             resumo_artista = request.form.get("resumo")
             nacionalidade_artista = request.form.get("nacionalidade")
+            lore_link = request.form.get("link")
 
             if (
                 not nome_artista
                 or not periodo_artista
                 or not nacionalidade_artista
                 or not resumo_artista
+                or not lore_link
             ):
                 return (
-                    "Erro: Informações: Nome, nacionalidade, resumo e período de atuação são obrigatórios.",
+                    "Todos os objetos são obrigatórios",
                     400,
                 )
 
             # Crie o novo objeto Artista
+
             novo_artista = Artista(
+                lore_link=lore_link,  # Alterado para corresponder ao nome na Model
                 nome=nome_artista,
                 periodo_atuacao=periodo_artista,
                 resumo=resumo_artista,
                 nacionalidade=nacionalidade_artista,
             )
-
             # Adicione e salve no banco
             db.session.add(novo_artista)
             db.session.commit()
