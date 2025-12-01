@@ -59,6 +59,23 @@
 		<div class="container mt-4">
 			<h1>Nossos Artistas</h1>
 
+			<form method="get" action="{{ url_for('artistas') }}" class="mb-4">
+				<div class="row">
+					<div class="col-md-4">
+						<input type="text" name="nome" class="form-control" placeholder="Nome do Artista" value="{{ request.args.get('nome', '') }}">
+					</div>
+					<div class="col-md-3">
+						<input type="number" name="ano_inicio" class="form-control" placeholder="Ano de Início" value="{{ request.args.get('ano_inicio', '') }}">
+					</div>
+					<div class="col-md-3">
+						<input type="number" name="ano_fim" class="form-control" placeholder="Ano de Fim" value="{{ request.args.get('ano_fim', '') }}">
+					</div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-primary">Filtrar</button>
+					</div>
+				</div>
+			</form>
+
 			<a href="{{ url_for('add_artista') }}" class="btn btn-primary mb-3">
 				+ Adicionar Novo Artista
 			</a>

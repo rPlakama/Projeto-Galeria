@@ -50,7 +50,20 @@ def obras():
 
 @app.route("/artistas")
 def artistas():
-    artistas = Artista.query.all()
+    nome_artista = request.args.get("nome")
+    ano_inicio = request.args.get("ano_inicio")
+    ano_fim = request.args.get("ano_fim")
+
+    query = Artista.query
+
+    if nome_artista:
+        query = query.filter(Artista.nome.ilike(f"%{nome_artista}%"))
+
+    if ano_inicio and ano_fim:
+        query = query.join(Obras).filter(Obras.ano.between(ano_inicio, ano_fim))
+
+    artistas = query.all()
+
     return render_template("artistas.html", artistas=artistas)
 
 
