@@ -82,7 +82,7 @@
                 {% for artista in artistas %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span>
-                        {{ artista.nome }} - ({{ artista.nacionalidade }} - {{artista.periodo_atuacao}} )
+		      {{ artista.nome }} - ({{ artista.nacionalidade }} {{artista.ano_inicio}} - {{artista.ano_fim}} )
                     </span>
                     <a href="{{ artista.lore_link }}" class="btn btn-outline-primary btn-sm" target="_blank">
                         visitar informações
