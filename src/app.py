@@ -96,10 +96,10 @@ def add_artista():
                     400,
                 )
 
-            # Crie o novo objeto Artista
 
-            novo_artista = Artista(
-                lore_link=lore_link,  # Alterado para corresponder ao nome na Model
+                # Jogando variaveis da DB para o jinja
+                novo_artista = Artista(
+                lore_link=lore_link,
                 nome=nome_artista,
                 periodo_atuacao=periodo_artista,
                 resumo=resumo_artista,
