@@ -18,7 +18,8 @@ class Artista(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     resumo = db.Column(db.Text, nullable=False)
-    periodo_atuacao = db.Column(db.String(255))
+    ano_inicio = db.Column(db.Integer)
+    ano_fim = db.Column(db.Integer)
     nacionalidade = db.Column(db.String(255))
     lore_link = db.Column(db.Text, nullable=False)
 
@@ -49,16 +50,19 @@ def obras():
 @app.route("/artistas")
 def artistas():
     nome_artista = request.args.get("nome")
-    ano_inicio = request.args.get("ano_inicio")
-    ano_fim = request.args.get("ano_fim")
+    ano_inicio_filtro = request.args.get("ano_inicio")
+    ano_fim_filtro = request.args.get("ano_fim")
 
     query = Artista.query
 
     if nome_artista:
         query = query.filter(Artista.nome.ilike(f"%{nome_artista}%"))
 
-    if ano_inicio and ano_fim:
-        query = query.join(Obras).filter(Obras.ano.between(ano_inicio, ano_fim))
+    if ano_inicio_filtro and ano_fim_filtro:
+        query = query.filter(
+            Artista.ano_inicio >= int(ano_inicio_filtro),
+            Artista.ano_fim <= int(ano_fim_filtro)
+        )
 
     artistas = query.all()
 
@@ -75,14 +79,16 @@ def add_artista():
         novo_artista = None
         try:
             nome_artista = request.form.get("nome")
-            periodo_artista = request.form.get("periodo_atuacao")
+            ano_inicio = request.form.get("ano_inicio")
+            ano_fim = request.form.get("ano_fim")
             resumo_artista = request.form.get("resumo")
             nacionalidade_artista = request.form.get("nacionalidade")
             lore_link = request.form.get("link")
 
             if (
                 not nome_artista
-                or not periodo_artista
+                or not ano_inicio
+                or not ano_fim
                 or not nacionalidade_artista
                 or not resumo_artista
                 or not lore_link
@@ -92,11 +98,11 @@ def add_artista():
                     400,
                 )
 
-
-                novo_artista = Artista(
+            novo_artista = Artista(
                 lore_link=lore_link,
                 nome=nome_artista,
-                periodo_atuacao=periodo_artista,
+                ano_inicio=int(ano_inicio),
+                ano_fim=int(ano_fim),
                 resumo=resumo_artista,
                 nacionalidade=nacionalidade_artista,
             )
