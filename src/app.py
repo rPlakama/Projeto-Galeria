@@ -34,9 +34,6 @@ class Obras(db.Model):
     artista = db.relationship("Artista", backref="obras")
 
 
-# urls
-
-
 @app.route("/")
 def index(name=None):
     obras = Obras.query.all()
@@ -68,7 +65,6 @@ def artistas():
     return render_template("artistas.html", artistas=artistas)
 
 
-# formulário de artista
 @app.route("/add_artista", methods=["GET", "POST"])
 def add_artista():
     if request.method == "GET":
@@ -97,7 +93,6 @@ def add_artista():
                 )
 
 
-                # Jogando variaveis da DB para o jinja
                 novo_artista = Artista(
                 lore_link=lore_link,
                 nome=nome_artista,
@@ -105,11 +100,9 @@ def add_artista():
                 resumo=resumo_artista,
                 nacionalidade=nacionalidade_artista,
             )
-            # Adicione e salve no banco
             db.session.add(novo_artista)
             db.session.commit()
 
-            # Redirecione para a lista de artistas
             return redirect(url_for("artistas"))
 
         except Exception as e:
@@ -117,7 +110,6 @@ def add_artista():
             return f"Um erro inesperado ocorreu: {e}", 500
 
 
-# formulário de obra
 @app.route("/add", methods=["GET", "POST"])
 def add_art():
     if request.method == "GET":
