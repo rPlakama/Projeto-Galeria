@@ -1,5 +1,5 @@
 {
-  description = "Projeto Galeria BC";
+  description = "PGD";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,7 +17,7 @@
         prettier
         superhtml
         typescript-language-server
-        # Python stuff...
+
         ruff
         python313
         python313Packages.mariadb
@@ -27,7 +27,10 @@
       ];
 
       shellHook = ''
-        echo "MySQL..."
+      ruff --version
+      python --version
+      flask --version
+      fish
       '';
     };
   };
