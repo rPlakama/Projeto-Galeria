@@ -1,3 +1,4 @@
 vim/
 flake.lock
+.*
 __*
