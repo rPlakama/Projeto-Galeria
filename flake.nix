@@ -1,5 +1,5 @@
 {
-  description = "PGD";
+  description = "Projeto (Galeria)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -16,7 +16,6 @@
         sqls
         prettier
         superhtml
-        typescript-language-server
 
         ruff
         python313
