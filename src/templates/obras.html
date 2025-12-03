@@ -84,6 +84,18 @@
             <p class="card-text">
                 {{ obra.desc | truncate(100) if obra.desc else 'No description.' }}
             </p>
+            {% if obra.desc and obra.desc|length > 100 %}
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{ obra.id }}" role="button" aria-expanded="false" aria-controls="collapseExample{{ obra.id }}">
+                    Leia mais
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample{{ obra.id }}">
+                <div class="card card-body">
+                    {{ obra.desc }}
+                </div>
+            </div>
+            {% endif %}
 
 	    
             <div class="mt-auto d-flex justify-content-between align-items-center">
